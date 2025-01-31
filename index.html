@@ -1,84 +1,115 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Crico 2</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Auction Registration</title>
+    <title>IDFC FIRST Bank Ranji Trophy - Live Streaming</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #ffffff;
             margin: 0;
             padding: 0;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
+
         h1 {
             text-align: center;
-            color: #333;
+            color: #FFD700;
+            margin: 30px 0;
+            font-size: 2.5em;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
-        .content {
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+            background-color: #222;
+            margin-top: 20px;
+        }
+
+        video {
+            width: 100%;
+            height: 500px;
+        }
+
+        .dropdown-container {
+            margin-top: 20px;
             text-align: center;
-            margin-bottom: 20px;
         }
-        .content p {
-            font-size: 16px;
-            color: #555;
+
+        .dropdown-container label {
+            font-size: 1.2em;
+            color: #FFD700;
+        }
+
+        .dropdown {
+            padding: 12px;
+            font-size: 1em;
+            background-color: #003366;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover {
+            background-color: #FFD700;
+            color: #003366;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📢 Cricket Auction Registration is Now Open! 📢</h1>
-        <div class="content">
-            <p>🏏 Get ready for a Trial Run! We are conducting a Test Auction to ensure everything runs smoothly before the main event!</p>
-            <p>📝 How to Register:</p>
-            <p>Registration is open now and will close on 23rd September, 12 PM (Afternoon).</p>
-            <p>⚠️ Important:</p>
-            <p>Test Auction is mandatory for all participants to practice and familiarize themselves with the auction process.</p>
-            <p>Ensure you're registered to take part in this important trial!</p>
-            <p>🏆 Let’s gear up and make sure everyone is auction-ready!</p>
+    <h1>IDFC FIRST Bank Ranji Trophy - Live Streaming</h1>
+    <div class="main-content">
+        <!-- Video Container -->
+        <div class="video-container">
+            <video id="liveFeed" controls autoplay muted>
+                <source src="https://prod-sports-eng-cf.jiocinema.com/hls/live/2100307/hd_akamai_merged_avc_eng_cricket_m4_310125/master_p3.m3u8" type="application/x-mpegURL">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
-        <!-- JotForm iFrame Embed -->
-        <iframe
-            id="JotFormIFrame-242632088860460"
-            title="Cricket Auction Registration Form"
-            onload="window.parent.scrollTo(0,0)"
-            allowtransparency="true"
-            allow="geolocation; microphone; camera; fullscreen"
-            src="https://form.jotform.com/242632088860460"
-            frameborder="0"
-            style="min-width:100%;max-width:100%;height:800px;border:none;"
-            scrolling="no"
-        >
-        </iframe>
-
-        <!-- Script to handle form embed -->
-        <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
-        <script>
-            window.jotformEmbedHandler("iframe[id='JotFormIFrame-242632088860460']", "https://form.jotform.com/");
-        </script>
+        <!-- Dropdown for Match Selection -->
+        <div class="dropdown-container">
+            <label for="matchSelect">Choose Match:</label>
+            <select id="matchSelect" class="dropdown" onchange="changeMatch()">
+                <option value="https://prod-sports-eng-gm.jiocinema.com/hls/live/2100306/hd_akamai_merged_avc_eng_cricket_m3_310125/master.m3u8">Bengal Vs Punjab</option>
+                <option value="https://prod-sports-eng-gm.jiocinema.com/hls/live/2100306/hd_akamai_merged_avc_eng_cricket_m1_310125/master.m3u8">Harayana vs Karnataka</option>
+                <option value="https://prod-sports-eng-gm.jiocinema.com/hls/live/2100306/hd_akamai_merged_avc_eng_cricket_m2_310125/master.m3u8">Baroda Vs Jammu Kashmir </option>
+            </select>
+        </div>
     </div>
-</body>
-</html>
-<!-- partial -->
-  
+
+    <script>
+        // Function to change the match feed
+        function changeMatch() {
+            const videoElement = document.getElementById('liveFeed');
+            const selectedMatch = document.getElementById('matchSelect').value;
+
+            // Update video source
+            videoElement.src = selectedMatch;
+            videoElement.play();
+
+            // Show alert with options
+            const userChoice = confirm("Join our Telegram channel for updates?");
+            if (userChoice) {
+                // Redirect to Telegram channel
+                window.location.href = "https://t.me/+NFoX453eVVI4N2M1";
+            }
+        }
+    </script>
 </body>
 </html>
